@@ -1,294 +1,573 @@
-03/22 08:51:01 INFO   :.main: *************** RSVP Agent started ***************
-03/22 08:51:01 INFO   :...locate_configFile: Specified configuration file: /u/user10/rsvpd1.conf
-03/22 08:51:01 INFO   :.main: Using log level 511
-03/22 08:51:01 INFO   :..settcpimage: Get TCP images rc - EDC8112I Operation not supported on socket. 
-03/22 08:51:01 INFO   :..settcpimage: Associate with TCP/IP image name = TCPCS
-03/22 08:51:02 INFO   :..reg_process: registering process with the system
-03/22 08:51:02 INFO   :..reg_process: attempt OS/390 registration
-03/22 08:51:02 INFO   :..reg_process: return from registration rc=0
-03/22 08:51:06 TRACE  :...read_physical_netif: Home list entries returned = 7
-03/22 08:51:06 INFO   :...read_physical_netif: index #0, interface VLINK1 has address 129.1.1.1, ifidx 0
-03/22 08:51:06 INFO   :...read_physical_netif: index #1, interface TR1 has address 9.37.65.139, ifidx 1
-03/22 08:51:06 INFO   :...read_physical_netif: index #2, interface LINK11 has address 9.67.100.1, ifidx
-03/22 08:51:06 INFO   :...read_physical_netif: index #3, interface LINK12 has address 9.67.101.1, ifidx 
-03/22 08:51:06 INFO   :...read_physical_netif: index #4, interface CTCD0 has address 9.67.116.98, ifidx 
-03/22 08:51:06 INFO   :...read_physical_netif: index #5, interface CTCD2 has address 9.67.117.98, ifidx
-03/22 08:51:06 INFO   :...read_physical_netif: index #6, interface LOOPBACK has address 127.0.0.1, ifidx 0
-03/22 08:51:06 INFO   :....mailslot_create: creating mailslot for timer
-03/22 08:51:06 INFO   :...mailbox_register: mailbox allocated for timer
-03/22 08:51:06 INFO   :.....mailslot_create: creating mailslot for RSVP
-03/22 08:51:06 INFO   :....mailbox_register: mailbox allocated for rsvp
-03/22 08:51:06 INFO   :.....mailslot_create: creating mailslot for RSVP via UDP
-03/22 08:51:06 WARNING:.....mailslot_create: setsockopt(MCAST_ADD) failed - EDC8116I Address not available.
-03/22 08:51:06 INFO   :....mailbox_register: mailbox allocated for rsvp-udp
-03/22 08:51:06 TRACE  :..entity_initialize: interface 129.1.1.1, entity for rsvp allocated and initialized
-03/22 08:51:06 INFO   :.....mailslot_create: creating mailslot for RSVP
-03/22 08:51:06 INFO   :....mailbox_register: mailbox allocated for rsvp
-03/22 08:51:06 INFO   :.....mailslot_create: creating mailslot for RSVP via UDP
-03/22 08:51:06 WARNING:.....mailslot_create: setsockopt(MCAST_ADD) failed - EDC8116I Address not available.
-03/22 08:51:06 INFO   :....mailbox_register: mailbox allocated for rsvp-udp
-03/22 08:51:06 TRACE  :..entity_initialize: interface 9.37.65.139, entity for rsvp allocated and 
-initialized
-03/22 08:51:06 INFO   :.....mailslot_create: creating mailslot for RSVP
-03/22 08:51:06 INFO   :....mailbox_register: mailbox allocated for rsvp
-03/22 08:51:06 INFO   :.....mailslot_create: creating mailslot for RSVP via UDP
-03/22 08:51:06 WARNING:.....mailslot_create: setsockopt(MCAST_ADD) failed - EDC8116I Address not available.
-03/22 08:51:06 INFO   :....mailbox_register: mailbox allocated for rsvp-udp
-03/22 08:51:06 TRACE  :..entity_initialize: interface 9.67.100.1, entity for rsvp allocated and initialized
-03/22 08:51:06 INFO   :.....mailslot_create: creating mailslot for RSVP
-03/22 08:51:06 INFO   :....mailbox_register: mailbox allocated for rsvp
-03/22 08:51:06 INFO   :.....mailslot_create: creating mailslot for RSVP via UDP
-03/22 08:51:06 WARNING:.....mailslot_create: setsockopt(MCAST_ADD) failed - EDC8116I Address not available.
-03/22 08:51:06 INFO   :....mailbox_register: mailbox allocated for rsvp-udp
-03/22 08:51:06 TRACE  :..entity_initialize: interface 9.67.101.1, entity for rsvp allocated and initialized
-03/22 08:51:06 INFO   :.....mailslot_create: creating mailslot for RSVP
-03/22 08:51:06 INFO   :....mailbox_register: mailbox allocated for rsvp
-03/22 08:51:06 INFO   :.....mailslot_create: creating mailslot for RSVP via UDP
-03/22 08:51:06 INFO   :....mailbox_register: mailbox allocated for rsvp-udp
-03/22 08:51:06 TRACE  :..entity_initialize: interface 9.67.116.98, entity for rsvp allocated and 
-initialized
-03/22 08:51:06 INFO   :.....mailslot_create: creating mailslot for RSVP
-03/22 08:51:06 INFO   :....mailbox_register: mailbox allocated for rsvp
-03/22 08:51:06 INFO   :.....mailslot_create: creating mailslot for RSVP via UDP
-03/22 08:51:06 INFO   :....mailbox_register: mailbox allocated for rsvp-udp
-03/22 08:51:06 TRACE  :..entity_initialize: interface 9.67.117.98, entity for rsvp allocated and 
-initialized
-03/22 08:51:06 INFO   :.....mailslot_create: creating mailslot for RSVP
-03/22 08:51:06 INFO   :....mailbox_register: mailbox allocated for rsvp
-03/22 08:51:06 INFO   :.....mailslot_create: creating mailslot for RSVP via UDP
-03/22 08:51:06 INFO   :....mailbox_register: mailbox allocated for rsvp-udp
-03/22 08:51:06 TRACE  :..entity_initialize: interface 127.0.0.1, entity for rsvp allocated and initialized
-03/22 08:51:06 INFO   :......mailslot_create: creating socket for querying route
-03/22 08:51:06 INFO   :.....mailbox_register: no mailbox necessary for forward
-03/22 08:51:06 INFO   :......mailslot_create: creating mailslot for route engine - informational socket
-03/22 08:51:06 TRACE  :......mailslot_create: ready to accept informational socket connection
-03/22 08:51:11 INFO   :.....mailbox_register: mailbox allocated for route
-03/22 08:51:11 INFO   :.....mailslot_create: creating socket for traffic control module
-03/22 08:51:11 INFO   :....mailbox_register: no mailbox necessary for traffic-control
-03/22 08:51:11 INFO   :....mailslot_create: creating mailslot for RSVP client API
-03/22 08:51:11 INFO   :...mailbox_register: mailbox allocated for rsvp-api
-03/22 08:51:11 INFO   :...mailslot_create: creating mailslot for terminate
-03/22 08:51:11 INFO   :..mailbox_register: mailbox allocated for terminate
-03/22 08:51:11 INFO   :...mailslot_create: creating mailslot for dump
-03/22 08:51:11 INFO   :..mailbox_register: mailbox allocated for dump
-03/22 08:51:11 INFO   :...mailslot_create: creating mailslot for (broken) pipe
-03/22 08:51:11 INFO   :..mailbox_register: mailbox allocated for pipe
-03/22 08:51:11 INFO   :.main: rsvpd initialization complete
-03/22 08:52:50 INFO   :......rsvp_api_open: accepted a new connection for rapi
-03/22 08:52:50 INFO   :.......mailbox_register: mailbox allocated for mailbox
-03/22 08:52:50 TRACE  :......rsvp_event_mapSession: Session=9.67.116.99:1047:6 does not exist
-03/22 08:52:50 EVENT  :.....api_reader: api request SESSION
-03/22 08:52:50 TRACE  :......rsvp_event_establishSession: local node will send
-03/22 08:52:50 INFO   :........router_forward_getOI: Ioctl to get route entry successful
-03/22 08:52:50 TRACE  :........router_forward_getOI:         source address:   9.67.116.98
-03/22 08:52:50 TRACE  :........router_forward_getOI:         out inf:   9.67.116.98
-03/22 08:52:50 TRACE  :........router_forward_getOI:         gateway:   0.0.0.0
-03/22 08:52:50 TRACE  :........router_forward_getOI:         route handle:   7f5251c8
-03/22 08:52:50 TRACE  :.......event_establishSessionSend: found outgoing if=9.67.116.98 through 
-forward engine
-03/22 08:52:50 TRACE  :......rsvp_event_mapSession: Session=9.67.116.99:1047:6 exists
-03/22 08:52:50 EVENT  :.....api_reader: api request SENDER
-03/22 08:52:50 INFO   :.......init_policyAPI: papi_debug:  Entering
-03/22 08:52:50 INFO   :.......init_policyAPI: papi_debug:  papiLogFunc = 98681F0 papiUserValue = 0
-03/22 08:52:50 INFO   :.......init_policyAPI: papi_debug:  Exiting
-03/22 08:52:50 INFO   :.......init_policyAPI: APIInitialize:  Entering
-03/22 08:52:50 INFO   :.......init_policyAPI: open_socket:  Entering
-03/22 08:52:50 INFO   :.......init_policyAPI: open_socket:  Exiting
-03/22 08:52:50 INFO   :.......init_policyAPI: APIInitialize:  ApiHandle = 98BDFB0,  connfd = 22
-03/22 08:52:50 INFO   :.......init_policyAPI: APIInitialize:  Exiting
-03/22 08:52:50 INFO   :.......init_policyAPI: RegisterWithPolicyAPI:  Entering
-03/22 08:52:50 INFO   :.......init_policyAPI: RegisterWithPolicyAPI:  Writing to socket = 22
-03/22 08:52:50 INFO   :.......init_policyAPI: ReadBuffer:  Entering
-03/22 08:52:51 INFO   :.......init_policyAPI: ReadBuffer:  Exiting
-03/22 08:52:51 INFO   :.......init_policyAPI: RegisterWithPolicyAPI:  Exiting
-03/22 08:52:51 INFO   :.......init_policyAPI: Policy API initialized
-03/22 08:52:51 INFO   :......rpapi_getPolicyData: RSVPFindActionName:  Entering
-03/22 08:52:51 INFO   :......rpapi_getPolicyData: ReadBuffer:  Entering
-03/22 08:52:51 INFO   :......rpapi_getPolicyData: ReadBuffer:  Exiting
-03/22 08:52:51 INFO   :......rpapi_getPolicyData: RSVPFindActionName:  Result = 0
-03/22 08:52:51 INFO   :......rpapi_getPolicyData: RSVPFindActionName:  Exiting
-03/22 08:52:51 INFO   :......rpapi_getPolicyData: found action name CLCat2 for 
-flow[sess=9.67.116.99:1047:6,source=9.67.116.98:8000]
-03/22 08:52:51 INFO   :......rpapi_getPolicyData: RSVPFindServiceDetailsOnActName:  Entering
-03/22 08:52:51 INFO   :......rpapi_getPolicyData: ReadBuffer:  Entering
-03/22 08:52:51 INFO   :......rpapi_getPolicyData: ReadBuffer:  Exiting
-03/22 08:52:51 INFO   :......rpapi_getPolicyData: RSVPFindServiceDetailsOnActName:  Result = 0
-03/22 08:52:51 INFO   :......rpapi_getPolicyData: RSVPFindServiceDetailsOnActName:  Exiting
-03/22 08:52:51 INFO   :.....api_reader: appl chose service type 1
-03/22 08:52:51 INFO   :......rpapi_getSpecData: RSVPGetTSpec:  Entering
-03/22 08:52:51 INFO   :......rpapi_getSpecData: RSVPGetTSpec:  Result = 0
-03/22 08:52:51 INFO   :......rpapi_getSpecData: RSVPGetTSpec:  Exiting
-03/22 08:52:51 TRACE  :.....api_reader: new service=1, old service=0
-03/22 08:52:51 INFO   :.......rsvp_flow_stateMachine: state SESSIONED, event PATHDELTA
-03/22 08:52:51 TRACE  :........rsvp_action_nHop: constructing a PATH
-03/22 08:52:51 TRACE  :........flow_timer_start: started T1
-03/22 08:52:51 TRACE  :.......rsvp_flow_stateMachine: entering state PATHED
-03/22 08:52:51 TRACE  :........mailslot_send: sending to (9.67.116.99:0)
-03/22 08:52:51 TRACE  :........mailslot_send: sending to (9.67.116.99:1698)
-03/22 08:52:51 TRACE  :.....rsvp_event: received event from RAW-IP on interface 9.67.116.98
-03/22 08:52:51 TRACE  :......rsvp_explode_packet: v=1,flg=0,type=2,cksm=54875,ttl=255,rsv=0,len=84
-03/22 08:52:51 TRACE  :.......rsvp_parse_objects: STYLE is WF
-03/22 08:52:51 INFO   :.......rsvp_parse_objects: obj RSVP_HOP hop=9.67.116.99, lih=0
-03/22 08:52:51 TRACE  :......rsvp_event_mapSession: Session=9.67.116.99:1047:6 exists
-03/22 08:52:51 INFO   :.......rsvp_flow_stateMachine: state PATHED, event RESVDELTA
-03/22 08:52:51 TRACE  :........traffic_action_oif: is to install filter
-03/22 08:52:51 INFO   :.........qosmgr_request: src-9.67.116.98:8000 dst-9.67.116.99:1047 proto-6 
-rthdl-7f5251c8
-03/22 08:52:51 INFO   :.........qosmgr_request: [CL r=90000 b=6000 p=110000 m=1024 M=2048]
-03/22 08:52:51 INFO   :.........qosmgr_request: Ioctl to add reservation successful
-03/22 08:52:51 INFO   :..........rpapi_Reg_UnregFlow: RSVPPutActionName:  Entering
-03/22 08:52:51 INFO   :..........rpapi_Reg_UnregFlow: ReadBuffer:  Entering
-03/22 08:52:52 INFO   :..........rpapi_Reg_UnregFlow: ReadBuffer:  Exiting
-03/22 08:52:52 INFO   :..........rpapi_Reg_UnregFlow: RSVPPutActionName:  Result = 0
-03/22 08:52:52 INFO   :..........rpapi_Reg_UnregFlow: RSVPPutActionName:  Exiting
-03/22 08:52:52 INFO   :..........rpapi_Reg_UnregFlow: flow[sess=9.67.116.99:1047:6, 
-source=9.67.116.98:8000] registered with CLCat2
-03/22 08:52:52 EVENT  :..........qosmgr_response: RESVRESP from qosmgr, reason=0, qoshandle=8b671d0
-03/22 08:52:52 INFO   :..........qosmgr_response: src-9.67.116.98:8000 dst-9.67.116.99:1047 proto-6
-03/22 08:52:52 TRACE  :...........traffic_reader: tc response msg=1, status=1
-03/22 08:52:52 INFO   :...........traffic_reader: Reservation req successful[session=9.67.116.99:1047:6,
-source=9.67.116.98:8000, qoshd=8b671d0]
-03/22 08:52:52 TRACE  :........api_action_sender: constructing a RESV
-03/22 08:52:52 TRACE  :........flow_timer_stop: stopped T1
-03/22 08:52:52 TRACE  :........flow_timer_stop: Stop T4
-03/22 08:52:52 TRACE  :........flow_timer_start: started T1
-03/22 08:52:52 TRACE  :........flow_timer_start: Start T4
-03/22 08:52:52 TRACE  :.......rsvp_flow_stateMachine: entering state RESVED
-03/22 08:53:07 EVENT  :..mailslot_sitter: process received signal SIGALRM
-03/22 08:53:07 TRACE  :.....event_timerT1_expire: T1 expired
-03/22 08:53:07 INFO   :......router_forward_getOI: Ioctl to query route entry successful
-03/22 08:53:07 TRACE  :......router_forward_getOI:         source address:   9.67.116.98
-03/22 08:53:07 TRACE  :......router_forward_getOI:         out inf:   9.67.116.98
-03/22 08:53:07 TRACE  :......router_forward_getOI:         gateway:   0.0.0.0
-03/22 08:53:07 TRACE  :......router_forward_getOI:         route handle:   7f5251c8
-03/22 08:53:07 INFO   :......rsvp_flow_stateMachine: state RESVED, event T1OUT
-03/22 08:53:07 TRACE  :.......rsvp_action_nHop: constructing a PATH
-03/22 08:53:07 TRACE  :.......flow_timer_start: started T1
-03/22 08:53:07 TRACE  :......rsvp_flow_stateMachine: reentering state RESVED
-03/22 08:53:07 TRACE  :.......mailslot_send: sending to (9.67.116.99:0)
-03/22 08:53:22 TRACE  :.....rsvp_event: received event from RAW-IP on interface 9.67.116.98
-03/22 08:53:22 TRACE  :......rsvp_explode_packet: v=1,flg=0,type=2,cksm=54875,ttl=255,rsv=0,len=84
-03/22 08:53:22 TRACE  :.......rsvp_parse_objects: STYLE is WF
-03/22 08:53:22 INFO   :.......rsvp_parse_objects: obj RSVP_HOP hop=9.67.116.99, lih=0
-03/22 08:53:22 TRACE  :......rsvp_event_mapSession: Session=9.67.116.99:1047:6 exists
-03/22 08:53:22 INFO   :.......rsvp_flow_stateMachine: state RESVED, event RESV
-03/22 08:53:22 TRACE  :........flow_timer_stop: Stop T4
-03/22 08:53:22 TRACE  :........flow_timer_start: Start T4
-03/22 08:53:22 TRACE  :.......rsvp_flow_stateMachine: reentering state RESVED
-03/22 08:53:22 EVENT  :..mailslot_sitter: process received signal SIGALRM
-03/22 08:53:22 TRACE  :.....event_timerT1_expire: T1 expired
-03/22 08:53:22 INFO   :......router_forward_getOI: Ioctl to query route entry successful
-03/22 08:53:22 TRACE  :......router_forward_getOI:         source address:   9.67.116.98
-03/22 08:53:22 TRACE  :......router_forward_getOI:         out inf:   9.67.116.98
-03/22 08:53:22 TRACE  :......router_forward_getOI:         gateway:   0.0.0.0
-03/22 08:53:22 TRACE  :......router_forward_getOI:         route handle:   7f5251c8
-03/22 08:53:22 INFO   :......rsvp_flow_stateMachine: state RESVED, event T1OUT
-03/22 08:53:22 TRACE  :.......rsvp_action_nHop: constructing a PATH
-03/22 08:53:22 TRACE  :.......flow_timer_start: started T1
-03/22 08:53:22 TRACE  :......rsvp_flow_stateMachine: reentering state RESVED
-03/22 08:53:22 TRACE  :.......mailslot_send: sending to (9.67.116.99:0)
-03/22 08:53:38 EVENT  :..mailslot_sitter: process received signal SIGALRM
-03/22 08:53:38 TRACE  :.....event_timerT1_expire: T1 expired
-03/22 08:53:38 INFO   :......router_forward_getOI: Ioctl to query route entry successful
-03/22 08:53:38 TRACE  :......router_forward_getOI:         source address:   9.67.116.98
-03/22 08:53:38 TRACE  :......router_forward_getOI:         out inf:   9.67.116.98
-03/22 08:53:38 TRACE  :......router_forward_getOI:         gateway:   0.0.0.0
-03/22 08:53:38 TRACE  :......router_forward_getOI:         route handle:   7f5251c8
-03/22 08:53:38 INFO   :......rsvp_flow_stateMachine: state RESVED, event T1OUT
-03/22 08:53:38 TRACE  :.......rsvp_action_nHop: constructing a PATH
-03/22 08:53:38 TRACE  :.......flow_timer_start: started T1
-03/22 08:53:38 TRACE  :......rsvp_flow_stateMachine: reentering state RESVED
-03/22 08:53:38 TRACE  :.......mailslot_send: sending to (9.67.116.99:0)
-03/22 08:53:52 TRACE  :.....rsvp_event: received event from RAW-IP on interface 9.67.116.98
-03/22 08:53:52 TRACE  :......rsvp_explode_packet: v=1,flg=0,type=2,cksm=54875,ttl=255,rsv=0,len=84
-03/22 08:53:52 TRACE  :.......rsvp_parse_objects: STYLE is WF
-03/22 08:53:52 INFO   :.......rsvp_parse_objects: obj RSVP_HOP hop=9.67.116.99, lih=0
-03/22 08:53:52 TRACE  :......rsvp_event_mapSession: Session=9.67.116.99:1047:6 exists
-03/22 08:53:52 INFO   :.......rsvp_flow_stateMachine: state RESVED, event RESV
-03/22 08:53:52 TRACE  :........flow_timer_stop: Stop T4
-03/22 08:53:52 TRACE  :........flow_timer_start: Start T4
-03/22 08:53:52 TRACE  :.......rsvp_flow_stateMachine: reentering state RESVED
-03/22 08:53:53 EVENT  :..mailslot_sitter: process received signal SIGALRM
-03/22 08:53:53 TRACE  :.....event_timerT1_expire: T1 expired
-03/22 08:53:53 INFO   :......router_forward_getOI: Ioctl to query route entry successful
-03/22 08:53:53 TRACE  :......router_forward_getOI:         source address:   9.67.116.98
-03/22 08:53:53 TRACE  :......router_forward_getOI:         out inf:   9.67.116.98
-03/22 08:53:53 TRACE  :......router_forward_getOI:         gateway:   0.0.0.0
-03/22 08:53:53 TRACE  :......router_forward_getOI:         route handle:   7f5251c8
-03/22 08:53:53 INFO   :......rsvp_flow_stateMachine: state RESVED, event T1OUT
-03/22 08:53:53 TRACE  :.......rsvp_action_nHop: constructing a PATH
-03/22 08:53:53 TRACE  :.......flow_timer_start: started T1
-03/22 08:53:53 TRACE  :......rsvp_flow_stateMachine: reentering state RESVED
-03/22 08:53:53 TRACE  :.......mailslot_send: sending to (9.67.116.99:0)
-03/22 08:54:09 EVENT  :..mailslot_sitter: process received signal SIGALRM
-03/22 08:54:09 TRACE  :.....event_timerT1_expire: T1 expired
-03/22 08:54:09 INFO   :......router_forward_getOI: Ioctl to query route entry successful
-03/22 08:54:09 TRACE  :......router_forward_getOI:         source address:   9.67.116.98
-03/22 08:54:09 TRACE  :......router_forward_getOI:         out inf:   9.67.116.98
-03/22 08:54:09 TRACE  :......router_forward_getOI:         gateway:   0.0.0.0
-03/22 08:54:09 TRACE  :......router_forward_getOI:         route handle:   7f5251c8
-03/22 08:54:09 INFO   :......rsvp_flow_stateMachine: state RESVED, event T1OUT
-03/22 08:54:09 TRACE  :.......rsvp_action_nHop: constructing a PATH
-03/22 08:54:09 TRACE  :.......flow_timer_start: started T1
-03/22 08:54:09 TRACE  :......rsvp_flow_stateMachine: reentering state RESVED
-03/22 08:54:09 TRACE  :.......mailslot_send: sending to (9.67.116.99:0)
-03/22 08:54:22 TRACE  :.....rsvp_event: received event from RAW-IP on interface 9.67.116.98
-03/22 08:54:22 TRACE  :......rsvp_explode_packet: v=1,flg=0,type=2,cksm=54875,ttl=255,rsv=0,len=84
-03/22 08:54:22 TRACE  :.......rsvp_parse_objects: STYLE is WF
-03/22 08:54:22 INFO   :.......rsvp_parse_objects: obj RSVP_HOP hop=9.67.116.99, lih=0
-03/22 08:54:22 TRACE  :......rsvp_event_mapSession: Session=9.67.116.99:1047:6 exists
-03/22 08:54:22 INFO   :.......rsvp_flow_stateMachine: state RESVED, event RESV
-03/22 08:54:22 TRACE  :........flow_timer_stop: Stop T4
-03/22 08:54:22 TRACE  :........flow_timer_start: Start T4
-03/22 08:54:22 TRACE  :.......rsvp_flow_stateMachine: reentering state RESVED
-03/22 08:54:24 EVENT  :..mailslot_sitter: process received signal SIGALRM
-03/22 08:54:24 TRACE  :.....event_timerT1_expire: T1 expired
-03/22 08:54:24 INFO   :......router_forward_getOI: Ioctl to query route entry successful
-03/22 08:54:24 TRACE  :......router_forward_getOI:         source address:   9.67.116.98
-03/22 08:54:24 TRACE  :......router_forward_getOI:         out inf:   9.67.116.98
-03/22 08:54:24 TRACE  :......router_forward_getOI:         gateway:   0.0.0.0
-03/22 08:54:24 TRACE  :......router_forward_getOI:         route handle:   7f5251c8
-03/22 08:54:24 INFO   :......rsvp_flow_stateMachine: state RESVED, event T1OUT
-03/22 08:54:24 TRACE  :.......rsvp_action_nHop: constructing a PATH
-03/22 08:54:24 TRACE  :.......flow_timer_start: started T1
-03/22 08:54:24 TRACE  :......rsvp_flow_stateMachine: reentering state RESVED
-03/22 08:54:24 TRACE  :.......mailslot_send: sending to (9.67.116.99:0)
-03/22 08:54:35 TRACE  :......rsvp_event_mapSession: Session=9.67.116.99:1047:6 exists
-03/22 08:54:35 EVENT  :.....api_reader: api request SENDER_WITHDRAW
-03/22 08:54:35 INFO   :.......rsvp_flow_stateMachine: state RESVED, event PATHTEAR
-03/22 08:54:35 TRACE  :........traffic_action_oif: is to remove filter
-03/22 08:54:35 INFO   :.........qosmgr_request: Ioctl to remove reservation successful
-03/22 08:54:35 INFO   :..........rpapi_Reg_UnregFlow: RSVPRemActionName:  Entering
-03/22 08:54:35 INFO   :..........rpapi_Reg_UnregFlow: ReadBuffer:  Entering
-03/22 08:54:35 INFO   :..........rpapi_Reg_UnregFlow: ReadBuffer:  Exiting
-03/22 08:54:35 INFO   :..........rpapi_Reg_UnregFlow: RSVPRemActionName:  Result = 0
-03/22 08:54:35 INFO   :..........rpapi_Reg_UnregFlow: RSVPRemActionName:  Exiting
-03/22 08:54:35 INFO   :..........rpapi_Reg_UnregFlow: flow[sess=9.67.116.99:1047:6, 
-source=9.67.116.98:8000] unregistered from CLCat2
-03/22 08:54:35 EVENT  :..........qosmgr_response: DELRESP from qosmgr, reason=0, qoshandle=0
-03/22 08:54:35 INFO   :..........qosmgr_response: src-9.67.116.98:8000 dst-9.67.116.99:1047 proto-6
-03/22 08:54:35 TRACE  :...........traffic_reader: tc response msg=3, status=1
-03/22 08:54:35 TRACE  :........rsvp_action_nHop: constructing a PATHTEAR
-03/22 08:54:35 TRACE  :........flow_timer_stop: stopped T1
-03/22 08:54:35 TRACE  :........flow_timer_stop: Stop T4
-03/22 08:54:35 ERROR  :.......rsvp_flow_stateMachine: entering state SESSIONED
-03/22 08:54:35 TRACE  :........mailslot_send: sending to (9.67.116.99:0)
-03/22 08:54:35 TRACE  :......rsvp_event_propagate: flow[session=9.67.116.99:1047:6, 
-source=9.67.116.98:8000] ceased
-03/22 08:54:35 EVENT  :.....api_reader: api request CLOSE
-03/22 08:54:35 INFO   :.......rsvp_flow_stateMachine: state SESSIONED, event PATHTEAR
-03/22 08:54:35 PROTERR:.......rsvp_flow_stateMachine: state SESSIONED does not expect event PATHTEAR
-03/22 08:54:53 EVENT  :..mailslot_sitter: process received signal SIGTERM
-03/22 08:54:53 INFO   :...check_signals: received TERM signal
-03/22 08:54:53 INFO   :......term_policyAPI: UnRegisterFromPolicyAPI:  Entering
-03/22 08:54:53 INFO   :......term_policyAPI: ReadBuffer:  Entering
-03/22 08:54:53 INFO   :......term_policyAPI: ReadBuffer:  Exiting
-03/22 08:54:53 INFO   :......term_policyAPI: UnRegisterFromPolicyAPI:  Result = 0
-03/22 08:54:53 INFO   :......term_policyAPI: UnRegisterFromPolicyAPI:  Exiting
-03/22 08:54:53 INFO   :......term_policyAPI: APITerminate:  Entering
-03/22 08:54:53 ERROR   :......term_policyAPI: APITerminate:  Exiting
-03/22 08:54:53 INFO   :......term_policyAPI: Policy API terminated
-03/22 08:54:53 INFO   :......dreg_process: deregistering process with the system
-03/22 08:54:53 INFO   :......dreg_process: attempt to dereg (ifaeddrg_byaddr)
-03/22 08:54:53 INFO   :......dreg_process: rc from ifaeddrg_byaddr  rc =0
-03/22 08:54:53 ERROR   :.....terminator: process terminated with exit code 0
+2020-08-19 17:59:44,127 [][3400][C411T15][cb2222ca-2bae-49ab-bee0-dbe5ad62ac54][WARN] - MOCK: LPSIncidentReceiver_V2 mock is on, not actually calling service
+2020-08-19 18:00:58,985 [][3400][C411T15][4340c180-51eb-44c6-9c33-66f6a591cdfc][ERROR] - Service threw exception
+2020-08-19 18:00:58,985 [][3400][C411T15][4340c180-51eb-44c6-9c33-66f6a591cdfc][ERROR] - Service threw exception
+java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1
+        at com.evry.fs.lending.wscommon.common.oidc.OIDCTokenHelper.stripSignatureFromToken(OIDCTokenHelper.java:76)
+        at com.evry.fs.lending.wscommon.common.oidc.OIDCTokenHelper.parseOIDC(OIDCTokenHelper.java:51)
+        at com.evry.fs.lending.wscommon.common.authentication.LendingWSCommonAuthenticator.authenticateWithRealSO(LendingWSCommonAuthenticator.java:108)
+        at com.evry.fs.lending.wscommon.common.authentication.LendingWSCommonAuthenticator.authenticate(LendingWSCommonAuthenticator.java:69)
+        at com.evry.fs.lending.wscommon.restesb.eam.LendingWSCommonRESTAuthenticationFilter.filter(LendingWSCommonRESTAuthenticationFilter.java:65)
+        at org.apache.cxf.jaxrs.utils.JAXRSUtils.runContainerRequestFilters(JAXRSUtils.java:1739)
+        at org.apache.cxf.jaxrs.interceptor.JAXRSInInterceptor.processRequest(JAXRSInInterceptor.java:205)
+        at org.apache.cxf.jaxrs.interceptor.JAXRSInInterceptor.handleMessage(JAXRSInInterceptor.java:78)
+        at org.apache.cxf.phase.PhaseInterceptorChain.doIntercept(PhaseInterceptorChain.java:308)
+        at org.apache.cxf.transport.ChainInitiationObserver.onMessage(ChainInitiationObserver.java:121)
+        at org.apache.cxf.transport.http.AbstractHTTPDestination.invoke(AbstractHTTPDestination.java:267)
+        at org.apache.cxf.transport.servlet.ServletController.invokeDestination(ServletController.java:234)
+        at org.apache.cxf.transport.servlet.ServletController.invoke(ServletController.java:208)
+        at org.apache.cxf.transport.servlet.ServletController.invoke(ServletController.java:160)
+        at org.apache.cxf.transport.servlet.CXFNonSpringServlet.invoke(CXFNonSpringServlet.java:225)
+        at org.apache.cxf.transport.servlet.AbstractHTTPServlet.handleRequest(AbstractHTTPServlet.java:301)
+        at org.apache.cxf.transport.servlet.AbstractHTTPServlet.doGet(AbstractHTTPServlet.java:225)
+        at javax.servlet.http.HttpServlet.service(HttpServlet.java:497)
+        at org.apache.cxf.transport.servlet.AbstractHTTPServlet.service(AbstractHTTPServlet.java:276)
+        at org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:763)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1631)
+        at org.eclipse.jetty.websocket.server.WebSocketUpgradeFilter.doFilter(WebSocketUpgradeFilter.java:226)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1618)
+        at ch.qos.logback.classic.helpers.MDCInsertingServletFilter.doFilter(MDCInsertingServletFilter.java:49)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1618)
+        at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+        at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1618)
+        at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+        at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1618)
+        at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:109)
+        at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1618)
+        at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+        at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1618)
+        at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:549)
+        at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:143)
+        at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:602)
+        at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127)
+        at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:235)
+        at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:1610)
+        at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:233)
+        at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1369)
+        at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:188)
+        at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:489)
+        at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1580)
+        at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:186)
+        at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1284)
+        at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
+        at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127)
+        at org.eclipse.jetty.server.Server.handle(Server.java:501)
+        at org.eclipse.jetty.server.HttpChannel.lambda$handle$1(HttpChannel.java:383)
+        at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:556)
+        at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:375)
+        at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:272)
+        at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:311)
+        at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103)
+        at org.eclipse.jetty.io.ChannelEndPoint$1.run(ChannelEndPoint.java:104)
+        at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.runTask(EatWhatYouKill.java:336)
+        at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:313)
+        at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.tryProduce(EatWhatYouKill.java:171)
+        at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.run(EatWhatYouKill.java:129)
+        at org.eclipse.jetty.util.thread.ReservedThreadExecutor$ReservedThread.run(ReservedThreadExecutor.java:375)
+        at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:806)
+        at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:938)
+        at java.base/java.lang.Thread.run(Thread.java:834)
+2020-08-19 18:00:58,986 [][3400][C411T15][4340c180-51eb-44c6-9c33-66f6a591cdfc][ERROR] - Service threw exception
+2020-08-19 18:00:58,986 [][3400][C411T15][4340c180-51eb-44c6-9c33-66f6a591cdfc][ERROR] - Service threw exception
+java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1
+        at com.evry.fs.lending.wscommon.common.oidc.OIDCTokenHelper.stripSignatureFromToken(OIDCTokenHelper.java:76)
+        at com.evry.fs.lending.wscommon.common.oidc.OIDCTokenHelper.parseOIDC(OIDCTokenHelper.java:51)
+        at com.evry.fs.lending.wscommon.common.authentication.LendingWSCommonAuthenticator.authenticateWithRealSO(LendingWSCommonAuthenticator.java:108)
+        at com.evry.fs.lending.wscommon.common.authentication.LendingWSCommonAuthenticator.authenticate(LendingWSCommonAuthenticator.java:69)
+        at com.evry.fs.lending.wscommon.restesb.eam.LendingWSCommonRESTAuthenticationFilter.filter(LendingWSCommonRESTAuthenticationFilter.java:65)
+        at org.apache.cxf.jaxrs.utils.JAXRSUtils.runContainerRequestFilters(JAXRSUtils.java:1739)
+        at org.apache.cxf.jaxrs.interceptor.JAXRSInInterceptor.processRequest(JAXRSInInterceptor.java:205)
+        at org.apache.cxf.jaxrs.interceptor.JAXRSInInterceptor.handleMessage(JAXRSInInterceptor.java:78)
+        at org.apache.cxf.phase.PhaseInterceptorChain.doIntercept(PhaseInterceptorChain.java:308)
+        at org.apache.cxf.transport.ChainInitiationObserver.onMessage(ChainInitiationObserver.java:121)
+        at org.apache.cxf.transport.http.AbstractHTTPDestination.invoke(AbstractHTTPDestination.java:267)
+        at org.apache.cxf.transport.servlet.ServletController.invokeDestination(ServletController.java:234)
+        at org.apache.cxf.transport.servlet.ServletController.invoke(ServletController.java:208)
+        at org.apache.cxf.transport.servlet.ServletController.invoke(ServletController.java:160)
+        at org.apache.cxf.transport.servlet.CXFNonSpringServlet.invoke(CXFNonSpringServlet.java:225)
+        at org.apache.cxf.transport.servlet.AbstractHTTPServlet.handleRequest(AbstractHTTPServlet.java:301)
+        at org.apache.cxf.transport.servlet.AbstractHTTPServlet.doGet(AbstractHTTPServlet.java:225)
+        at javax.servlet.http.HttpServlet.service(HttpServlet.java:497)
+        at org.apache.cxf.transport.servlet.AbstractHTTPServlet.service(AbstractHTTPServlet.java:276)
+        at org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:763)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1631)
+        at org.eclipse.jetty.websocket.server.WebSocketUpgradeFilter.doFilter(WebSocketUpgradeFilter.java:226)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1618)
+        at ch.qos.logback.classic.helpers.MDCInsertingServletFilter.doFilter(MDCInsertingServletFilter.java:49)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1618)
+        at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+        at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1618)
+        at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+        at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1618)
+        at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:109)
+        at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1618)
+        at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+        at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1618)
+        at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:549)
+        at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:143)
+        at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:602)
+        at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127)
+        at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:235)
+        at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:1610)
+        at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:233)
+        at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1369)
+        at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:188)
+        at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:489)
+        at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1580)
+        at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:186)
+        at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1284)
+        at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
+        at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127)
+        at org.eclipse.jetty.server.Server.handle(Server.java:501)
+        at org.eclipse.jetty.server.HttpChannel.lambda$handle$1(HttpChannel.java:383)
+        at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:556)
+        at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:375)
+        at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:272)
+        at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:311)
+        at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103)
+        at org.eclipse.jetty.io.ChannelEndPoint$1.run(ChannelEndPoint.java:104)
+        at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.runTask(EatWhatYouKill.java:336)
+        at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:313)
+        at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.tryProduce(EatWhatYouKill.java:171)
+        at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.run(EatWhatYouKill.java:129)
+        at org.eclipse.jetty.util.thread.ReservedThreadExecutor$ReservedThread.run(ReservedThreadExecutor.java:375)
+        at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:806)
+        at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:938)
+        at java.base/java.lang.Thread.run(Thread.java:834)
+2020-08-19 18:00:58,998 [][3400][C411T15][4340c180-51eb-44c6-9c33-66f6a591cdfc][WARN] - Unable to find configuration: com.evry.fs.lending.ecp.incidentreceiver.ws.client.LPSIncidentReceiverV2ClientConfiguration
+2020-08-19 18:00:58,999 [][3400][C411T15][4340c180-51eb-44c6-9c33-66f6a591cdfc][WARN] - MOCK: LPSIncidentReceiver_V2 mock is on, not actually calling service
+2020-08-19 18:01:09,970 [][3400][C411T15][436a287d-aadd-4d6d-85f8-3051f9d8db2e][ERROR] - Service threw exception
+2020-08-19 18:01:09,971 [][3400][C411T15][436a287d-aadd-4d6d-85f8-3051f9d8db2e][ERROR] - Service threw exception
+java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1
+        at com.evry.fs.lending.wscommon.common.oidc.OIDCTokenHelper.stripSignatureFromToken(OIDCTokenHelper.java:76)
+        at com.evry.fs.lending.wscommon.common.oidc.OIDCTokenHelper.parseOIDC(OIDCTokenHelper.java:51)
+        at com.evry.fs.lending.wscommon.common.authentication.LendingWSCommonAuthenticator.authenticateWithRealSO(LendingWSCommonAuthenticator.java:108)
+        at com.evry.fs.lending.wscommon.common.authentication.LendingWSCommonAuthenticator.authenticate(LendingWSCommonAuthenticator.java:69)
+        at com.evry.fs.lending.wscommon.restesb.eam.LendingWSCommonRESTAuthenticationFilter.filter(LendingWSCommonRESTAuthenticationFilter.java:65)
+        at org.apache.cxf.jaxrs.utils.JAXRSUtils.runContainerRequestFilters(JAXRSUtils.java:1739)
+        at org.apache.cxf.jaxrs.interceptor.JAXRSInInterceptor.processRequest(JAXRSInInterceptor.java:205)
+        at org.apache.cxf.jaxrs.interceptor.JAXRSInInterceptor.handleMessage(JAXRSInInterceptor.java:78)
+        at org.apache.cxf.phase.PhaseInterceptorChain.doIntercept(PhaseInterceptorChain.java:308)
+        at org.apache.cxf.transport.ChainInitiationObserver.onMessage(ChainInitiationObserver.java:121)
+        at org.apache.cxf.transport.http.AbstractHTTPDestination.invoke(AbstractHTTPDestination.java:267)
+        at org.apache.cxf.transport.servlet.ServletController.invokeDestination(ServletController.java:234)
+        at org.apache.cxf.transport.servlet.ServletController.invoke(ServletController.java:208)
+        at org.apache.cxf.transport.servlet.ServletController.invoke(ServletController.java:160)
+        at org.apache.cxf.transport.servlet.CXFNonSpringServlet.invoke(CXFNonSpringServlet.java:225)
+        at org.apache.cxf.transport.servlet.AbstractHTTPServlet.handleRequest(AbstractHTTPServlet.java:301)
+        at org.apache.cxf.transport.servlet.AbstractHTTPServlet.doGet(AbstractHTTPServlet.java:225)
+        at javax.servlet.http.HttpServlet.service(HttpServlet.java:497)
+        at org.apache.cxf.transport.servlet.AbstractHTTPServlet.service(AbstractHTTPServlet.java:276)
+        at org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:763)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1631)
+        at org.eclipse.jetty.websocket.server.WebSocketUpgradeFilter.doFilter(WebSocketUpgradeFilter.java:226)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1618)
+        at ch.qos.logback.classic.helpers.MDCInsertingServletFilter.doFilter(MDCInsertingServletFilter.java:49)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1618)
+        at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+        at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1618)
+        at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+        at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1618)
+        at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:109)
+        at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1618)
+        at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+        at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1618)
+        at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:549)
+        at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:143)
+        at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:602)
+        at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127)
+        at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:235)
+        at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:1610)
+        at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:233)
+        at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1369)
+        at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:188)
+        at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:489)
+        at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1580)
+        at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:186)
+        at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1284)
+        at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
+        at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127)
+        at org.eclipse.jetty.server.Server.handle(Server.java:501)
+        at org.eclipse.jetty.server.HttpChannel.lambda$handle$1(HttpChannel.java:383)
+        at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:556)
+        at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:375)
+        at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:272)
+        at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:311)
+        at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103)
+        at org.eclipse.jetty.io.ChannelEndPoint$1.run(ChannelEndPoint.java:104)
+        at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.runTask(EatWhatYouKill.java:336)
+        at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:313)
+        at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.tryProduce(EatWhatYouKill.java:171)
+        at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.run(EatWhatYouKill.java:129)
+        at org.eclipse.jetty.util.thread.ReservedThreadExecutor$ReservedThread.run(ReservedThreadExecutor.java:375)
+        at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:806)
+        at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:938)
+        at java.base/java.lang.Thread.run(Thread.java:834)
+2020-08-19 18:01:09,971 [][3400][C411T15][436a287d-aadd-4d6d-85f8-3051f9d8db2e][ERROR] - Service threw exception
+2020-08-19 18:01:09,971 [][3400][C411T15][436a287d-aadd-4d6d-85f8-3051f9d8db2e][ERROR] - Service threw exception
+java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1
+        at com.evry.fs.lending.wscommon.common.oidc.OIDCTokenHelper.stripSignatureFromToken(OIDCTokenHelper.java:76)
+        at com.evry.fs.lending.wscommon.common.oidc.OIDCTokenHelper.parseOIDC(OIDCTokenHelper.java:51)
+        at com.evry.fs.lending.wscommon.common.authentication.LendingWSCommonAuthenticator.authenticateWithRealSO(LendingWSCommonAuthenticator.java:108)
+        at com.evry.fs.lending.wscommon.common.authentication.LendingWSCommonAuthenticator.authenticate(LendingWSCommonAuthenticator.java:69)
+        at com.evry.fs.lending.wscommon.restesb.eam.LendingWSCommonRESTAuthenticationFilter.filter(LendingWSCommonRESTAuthenticationFilter.java:65)
+        at org.apache.cxf.jaxrs.utils.JAXRSUtils.runContainerRequestFilters(JAXRSUtils.java:1739)
+        at org.apache.cxf.jaxrs.interceptor.JAXRSInInterceptor.processRequest(JAXRSInInterceptor.java:205)
+        at org.apache.cxf.jaxrs.interceptor.JAXRSInInterceptor.handleMessage(JAXRSInInterceptor.java:78)
+        at org.apache.cxf.phase.PhaseInterceptorChain.doIntercept(PhaseInterceptorChain.java:308)
+        at org.apache.cxf.transport.ChainInitiationObserver.onMessage(ChainInitiationObserver.java:121)
+        at org.apache.cxf.transport.http.AbstractHTTPDestination.invoke(AbstractHTTPDestination.java:267)
+        at org.apache.cxf.transport.servlet.ServletController.invokeDestination(ServletController.java:234)
+        at org.apache.cxf.transport.servlet.ServletController.invoke(ServletController.java:208)
+        at org.apache.cxf.transport.servlet.ServletController.invoke(ServletController.java:160)
+        at org.apache.cxf.transport.servlet.CXFNonSpringServlet.invoke(CXFNonSpringServlet.java:225)
+        at org.apache.cxf.transport.servlet.AbstractHTTPServlet.handleRequest(AbstractHTTPServlet.java:301)
+        at org.apache.cxf.transport.servlet.AbstractHTTPServlet.doGet(AbstractHTTPServlet.java:225)
+        at javax.servlet.http.HttpServlet.service(HttpServlet.java:497)
+        at org.apache.cxf.transport.servlet.AbstractHTTPServlet.service(AbstractHTTPServlet.java:276)
+        at org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:763)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1631)
+        at org.eclipse.jetty.websocket.server.WebSocketUpgradeFilter.doFilter(WebSocketUpgradeFilter.java:226)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1618)
+        at ch.qos.logback.classic.helpers.MDCInsertingServletFilter.doFilter(MDCInsertingServletFilter.java:49)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1618)
+        at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+        at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1618)
+        at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+        at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1618)
+        at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:109)
+        at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1618)
+        at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+        at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1618)
+        at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:549)
+        at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:143)
+        at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:602)
+        at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127)
+        at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:235)
+        at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:1610)
+        at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:233)
+        at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1369)
+        at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:188)
+        at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:489)
+        at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1580)
+        at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:186)
+        at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1284)
+        at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
+        at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127)
+        at org.eclipse.jetty.server.Server.handle(Server.java:501)
+        at org.eclipse.jetty.server.HttpChannel.lambda$handle$1(HttpChannel.java:383)
+        at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:556)
+        at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:375)
+        at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:272)
+        at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:311)
+        at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103)
+        at org.eclipse.jetty.io.ChannelEndPoint$1.run(ChannelEndPoint.java:104)
+        at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.runTask(EatWhatYouKill.java:336)
+        at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:313)
+        at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.tryProduce(EatWhatYouKill.java:171)
+        at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.run(EatWhatYouKill.java:129)
+        at org.eclipse.jetty.util.thread.ReservedThreadExecutor$ReservedThread.run(ReservedThreadExecutor.java:375)
+        at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:806)
+        at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:938)
+        at java.base/java.lang.Thread.run(Thread.java:834)
+2020-08-19 18:01:09,972 [][3400][C411T15][436a287d-aadd-4d6d-85f8-3051f9d8db2e][WARN] - MOCK: LPSIncidentReceiver_V2 mock is on, not actually calling service
+2020-08-19 18:01:30,620 [][3400][C411T15][1d317fef-9aa9-4e8b-b0fc-15a3efd5ce06][ERROR] - Service threw exception
+2020-08-19 18:01:30,620 [][3400][C411T15][1d317fef-9aa9-4e8b-b0fc-15a3efd5ce06][ERROR] - Service threw exception
+java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1
+        at com.evry.fs.lending.wscommon.common.oidc.OIDCTokenHelper.stripSignatureFromToken(OIDCTokenHelper.java:76)
+        at com.evry.fs.lending.wscommon.common.oidc.OIDCTokenHelper.parseOIDC(OIDCTokenHelper.java:51)
+        at com.evry.fs.lending.wscommon.common.authentication.LendingWSCommonAuthenticator.authenticateWithRealSO(LendingWSCommonAuthenticator.java:108)
+        at com.evry.fs.lending.wscommon.common.authentication.LendingWSCommonAuthenticator.authenticate(LendingWSCommonAuthenticator.java:69)
+        at com.evry.fs.lending.wscommon.restesb.eam.LendingWSCommonRESTAuthenticationFilter.filter(LendingWSCommonRESTAuthenticationFilter.java:65)
+        at org.apache.cxf.jaxrs.utils.JAXRSUtils.runContainerRequestFilters(JAXRSUtils.java:1739)
+        at org.apache.cxf.jaxrs.interceptor.JAXRSInInterceptor.processRequest(JAXRSInInterceptor.java:205)
+        at org.apache.cxf.jaxrs.interceptor.JAXRSInInterceptor.handleMessage(JAXRSInInterceptor.java:78)
+        at org.apache.cxf.phase.PhaseInterceptorChain.doIntercept(PhaseInterceptorChain.java:308)
+        at org.apache.cxf.transport.ChainInitiationObserver.onMessage(ChainInitiationObserver.java:121)
+        at org.apache.cxf.transport.http.AbstractHTTPDestination.invoke(AbstractHTTPDestination.java:267)
+        at org.apache.cxf.transport.servlet.ServletController.invokeDestination(ServletController.java:234)
+        at org.apache.cxf.transport.servlet.ServletController.invoke(ServletController.java:208)
+        at org.apache.cxf.transport.servlet.ServletController.invoke(ServletController.java:160)
+        at org.apache.cxf.transport.servlet.CXFNonSpringServlet.invoke(CXFNonSpringServlet.java:225)
+        at org.apache.cxf.transport.servlet.AbstractHTTPServlet.handleRequest(AbstractHTTPServlet.java:301)
+        at org.apache.cxf.transport.servlet.AbstractHTTPServlet.doGet(AbstractHTTPServlet.java:225)
+        at javax.servlet.http.HttpServlet.service(HttpServlet.java:497)
+        at org.apache.cxf.transport.servlet.AbstractHTTPServlet.service(AbstractHTTPServlet.java:276)
+        at org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:763)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1631)
+        at org.eclipse.jetty.websocket.server.WebSocketUpgradeFilter.doFilter(WebSocketUpgradeFilter.java:226)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1618)
+        at ch.qos.logback.classic.helpers.MDCInsertingServletFilter.doFilter(MDCInsertingServletFilter.java:49)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1618)
+        at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+        at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1618)
+        at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+        at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1618)
+        at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:109)
+        at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1618)
+        at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+        at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1618)
+        at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:549)
+        at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:143)
+        at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:602)
+        at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127)
+        at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:235)
+        at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:1610)
+        at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:233)
+        at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1369)
+        at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:188)
+        at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:489)
+        at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1580)
+        at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:186)
+        at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1284)
+        at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
+        at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127)
+        at org.eclipse.jetty.server.Server.handle(Server.java:501)
+        at org.eclipse.jetty.server.HttpChannel.lambda$handle$1(HttpChannel.java:383)
+        at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:556)
+        at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:375)
+        at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:272)
+        at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:311)
+        at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103)
+        at org.eclipse.jetty.io.ChannelEndPoint$1.run(ChannelEndPoint.java:104)
+        at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.runTask(EatWhatYouKill.java:336)
+        at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:313)
+        at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.tryProduce(EatWhatYouKill.java:171)
+        at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.run(EatWhatYouKill.java:129)
+        at org.eclipse.jetty.util.thread.ReservedThreadExecutor$ReservedThread.run(ReservedThreadExecutor.java:375)
+        at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:806)
+        at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:938)
+        at java.base/java.lang.Thread.run(Thread.java:834)
+2020-08-19 18:01:30,621 [][3400][C411T15][1d317fef-9aa9-4e8b-b0fc-15a3efd5ce06][ERROR] - Service threw exception
+2020-08-19 18:01:30,621 [][3400][C411T15][1d317fef-9aa9-4e8b-b0fc-15a3efd5ce06][ERROR] - Service threw exception
+java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1
+        at com.evry.fs.lending.wscommon.common.oidc.OIDCTokenHelper.stripSignatureFromToken(OIDCTokenHelper.java:76)
+        at com.evry.fs.lending.wscommon.common.oidc.OIDCTokenHelper.parseOIDC(OIDCTokenHelper.java:51)
+        at com.evry.fs.lending.wscommon.common.authentication.LendingWSCommonAuthenticator.authenticateWithRealSO(LendingWSCommonAuthenticator.java:108)
+        at com.evry.fs.lending.wscommon.common.authentication.LendingWSCommonAuthenticator.authenticate(LendingWSCommonAuthenticator.java:69)
+        at com.evry.fs.lending.wscommon.restesb.eam.LendingWSCommonRESTAuthenticationFilter.filter(LendingWSCommonRESTAuthenticationFilter.java:65)
+        at org.apache.cxf.jaxrs.utils.JAXRSUtils.runContainerRequestFilters(JAXRSUtils.java:1739)
+        at org.apache.cxf.jaxrs.interceptor.JAXRSInInterceptor.processRequest(JAXRSInInterceptor.java:205)
+        at org.apache.cxf.jaxrs.interceptor.JAXRSInInterceptor.handleMessage(JAXRSInInterceptor.java:78)
+        at org.apache.cxf.phase.PhaseInterceptorChain.doIntercept(PhaseInterceptorChain.java:308)
+        at org.apache.cxf.transport.ChainInitiationObserver.onMessage(ChainInitiationObserver.java:121)
+        at org.apache.cxf.transport.http.AbstractHTTPDestination.invoke(AbstractHTTPDestination.java:267)
+        at org.apache.cxf.transport.servlet.ServletController.invokeDestination(ServletController.java:234)
+        at org.apache.cxf.transport.servlet.ServletController.invoke(ServletController.java:208)
+        at org.apache.cxf.transport.servlet.ServletController.invoke(ServletController.java:160)
+        at org.apache.cxf.transport.servlet.CXFNonSpringServlet.invoke(CXFNonSpringServlet.java:225)
+        at org.apache.cxf.transport.servlet.AbstractHTTPServlet.handleRequest(AbstractHTTPServlet.java:301)
+        at org.apache.cxf.transport.servlet.AbstractHTTPServlet.doGet(AbstractHTTPServlet.java:225)
+        at javax.servlet.http.HttpServlet.service(HttpServlet.java:497)
+        at org.apache.cxf.transport.servlet.AbstractHTTPServlet.service(AbstractHTTPServlet.java:276)
+        at org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:763)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1631)
+        at org.eclipse.jetty.websocket.server.WebSocketUpgradeFilter.doFilter(WebSocketUpgradeFilter.java:226)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1618)
+        at ch.qos.logback.classic.helpers.MDCInsertingServletFilter.doFilter(MDCInsertingServletFilter.java:49)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1618)
+        at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+        at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1618)
+        at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+        at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1618)
+        at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:109)
+        at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1618)
+        at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+        at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1618)
+        at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:549)
+        at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:143)
+        at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:602)
+        at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127)
+        at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:235)
+        at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:1610)
+        at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:233)
+        at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1369)
+        at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:188)
+        at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:489)
+        at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1580)
+        at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:186)
+        at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1284)
+        at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
+        at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127)
+        at org.eclipse.jetty.server.Server.handle(Server.java:501)
+        at org.eclipse.jetty.server.HttpChannel.lambda$handle$1(HttpChannel.java:383)
+        at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:556)
+        at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:375)
+        at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:272)
+        at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:311)
+        at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103)
+        at org.eclipse.jetty.io.ChannelEndPoint$1.run(ChannelEndPoint.java:104)
+        at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.runTask(EatWhatYouKill.java:336)
+        at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:313)
+        at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.tryProduce(EatWhatYouKill.java:171)
+        at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.run(EatWhatYouKill.java:129)
+        at org.eclipse.jetty.util.thread.ReservedThreadExecutor$ReservedThread.run(ReservedThreadExecutor.java:375)
+        at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:806)
+        at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:938)
+        at java.base/java.lang.Thread.run(Thread.java:834)
+2020-08-19 18:01:30,622 [][3400][C411T15][1d317fef-9aa9-4e8b-b0fc-15a3efd5ce06][WARN] - MOCK: LPSIncidentReceiver_V2 mock is on, not actually calling service
+2020-08-19 18:01:55,322 [][3400][C411T15][abf5862e-3367-4b08-898a-9488b631bb7b][ERROR] - Service threw exception
+2020-08-19 18:01:55,323 [][3400][C411T15][abf5862e-3367-4b08-898a-9488b631bb7b][ERROR] - Service threw exception
+java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1
+        at com.evry.fs.lending.wscommon.common.oidc.OIDCTokenHelper.stripSignatureFromToken(OIDCTokenHelper.java:76)
+        at com.evry.fs.lending.wscommon.common.oidc.OIDCTokenHelper.parseOIDC(OIDCTokenHelper.java:51)
+        at com.evry.fs.lending.wscommon.common.authentication.LendingWSCommonAuthenticator.authenticateWithRealSO(LendingWSCommonAuthenticator.java:108)
+        at com.evry.fs.lending.wscommon.common.authentication.LendingWSCommonAuthenticator.authenticate(LendingWSCommonAuthenticator.java:69)
+        at com.evry.fs.lending.wscommon.restesb.eam.LendingWSCommonRESTAuthenticationFilter.filter(LendingWSCommonRESTAuthenticationFilter.java:65)
+        at org.apache.cxf.jaxrs.utils.JAXRSUtils.runContainerRequestFilters(JAXRSUtils.java:1739)
+        at org.apache.cxf.jaxrs.interceptor.JAXRSInInterceptor.processRequest(JAXRSInInterceptor.java:205)
+        at org.apache.cxf.jaxrs.interceptor.JAXRSInInterceptor.handleMessage(JAXRSInInterceptor.java:78)
+        at org.apache.cxf.phase.PhaseInterceptorChain.doIntercept(PhaseInterceptorChain.java:308)
+        at org.apache.cxf.transport.ChainInitiationObserver.onMessage(ChainInitiationObserver.java:121)
+        at org.apache.cxf.transport.http.AbstractHTTPDestination.invoke(AbstractHTTPDestination.java:267)
+        at org.apache.cxf.transport.servlet.ServletController.invokeDestination(ServletController.java:234)
+        at org.apache.cxf.transport.servlet.ServletController.invoke(ServletController.java:208)
+        at org.apache.cxf.transport.servlet.ServletController.invoke(ServletController.java:160)
+        at org.apache.cxf.transport.servlet.CXFNonSpringServlet.invoke(CXFNonSpringServlet.java:225)
+        at org.apache.cxf.transport.servlet.AbstractHTTPServlet.handleRequest(AbstractHTTPServlet.java:301)
+        at org.apache.cxf.transport.servlet.AbstractHTTPServlet.doGet(AbstractHTTPServlet.java:225)
+        at javax.servlet.http.HttpServlet.service(HttpServlet.java:497)
+        at org.apache.cxf.transport.servlet.AbstractHTTPServlet.service(AbstractHTTPServlet.java:276)
+        at org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:763)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1631)
+        at org.eclipse.jetty.websocket.server.WebSocketUpgradeFilter.doFilter(WebSocketUpgradeFilter.java:226)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1618)
+        at ch.qos.logback.classic.helpers.MDCInsertingServletFilter.doFilter(MDCInsertingServletFilter.java:49)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1618)
+        at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+        at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1618)
+        at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+        at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1618)
+        at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:109)
+        at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1618)
+        at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+        at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1618)
+        at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:549)
+        at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:143)
+        at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:602)
+        at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127)
+        at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:235)
+        at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:1610)
+        at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:233)
+        at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1369)
+        at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:188)
+        at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:489)
+        at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1580)
+        at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:186)
+        at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1284)
+        at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
+        at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127)
+        at org.eclipse.jetty.server.Server.handle(Server.java:501)
+        at org.eclipse.jetty.server.HttpChannel.lambda$handle$1(HttpChannel.java:383)
+        at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:556)
+        at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:375)
+        at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:272)
+        at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:311)
+        at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103)
+        at org.eclipse.jetty.io.ChannelEndPoint$1.run(ChannelEndPoint.java:104)
+        at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.runTask(EatWhatYouKill.java:336)
+        at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:313)
+        at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.tryProduce(EatWhatYouKill.java:171)
+        at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.run(EatWhatYouKill.java:129)
+        at org.eclipse.jetty.util.thread.ReservedThreadExecutor$ReservedThread.run(ReservedThreadExecutor.java:375)
+        at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:806)
+        at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:938)
+        at java.base/java.lang.Thread.run(Thread.java:834)
+2020-08-19 18:01:55,323 [][3400][C411T15][abf5862e-3367-4b08-898a-9488b631bb7b][ERROR] - Service threw exception
+2020-08-19 18:01:55,323 [][3400][C411T15][abf5862e-3367-4b08-898a-9488b631bb7b][ERROR] - Service threw exception
+java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1
+        at com.evry.fs.lending.wscommon.common.oidc.OIDCTokenHelper.stripSignatureFromToken(OIDCTokenHelper.java:76)
+        at com.evry.fs.lending.wscommon.common.oidc.OIDCTokenHelper.parseOIDC(OIDCTokenHelper.java:51)
+        at com.evry.fs.lending.wscommon.common.authentication.LendingWSCommonAuthenticator.authenticateWithRealSO(LendingWSCommonAuthenticator.java:108)
+        at com.evry.fs.lending.wscommon.common.authentication.LendingWSCommonAuthenticator.authenticate(LendingWSCommonAuthenticator.java:69)
+        at com.evry.fs.lending.wscommon.restesb.eam.LendingWSCommonRESTAuthenticationFilter.filter(LendingWSCommonRESTAuthenticationFilter.java:65)
+        at org.apache.cxf.jaxrs.utils.JAXRSUtils.runContainerRequestFilters(JAXRSUtils.java:1739)
+        at org.apache.cxf.jaxrs.interceptor.JAXRSInInterceptor.processRequest(JAXRSInInterceptor.java:205)
+        at org.apache.cxf.jaxrs.interceptor.JAXRSInInterceptor.handleMessage(JAXRSInInterceptor.java:78)
+        at org.apache.cxf.phase.PhaseInterceptorChain.doIntercept(PhaseInterceptorChain.java:308)
+        at org.apache.cxf.transport.ChainInitiationObserver.onMessage(ChainInitiationObserver.java:121)
+        at org.apache.cxf.transport.http.AbstractHTTPDestination.invoke(AbstractHTTPDestination.java:267)
+        at org.apache.cxf.transport.servlet.ServletController.invokeDestination(ServletController.java:234)
+        at org.apache.cxf.transport.servlet.ServletController.invoke(ServletController.java:208)
+        at org.apache.cxf.transport.servlet.ServletController.invoke(ServletController.java:160)
+        at org.apache.cxf.transport.servlet.CXFNonSpringServlet.invoke(CXFNonSpringServlet.java:225)
+        at org.apache.cxf.transport.servlet.AbstractHTTPServlet.handleRequest(AbstractHTTPServlet.java:301)
+        at org.apache.cxf.transport.servlet.AbstractHTTPServlet.doGet(AbstractHTTPServlet.java:225)
+        at javax.servlet.http.HttpServlet.service(HttpServlet.java:497)
+        at org.apache.cxf.transport.servlet.AbstractHTTPServlet.service(AbstractHTTPServlet.java:276)
+        at org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:763)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1631)
+        at org.eclipse.jetty.websocket.server.WebSocketUpgradeFilter.doFilter(WebSocketUpgradeFilter.java:226)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1618)
+        at ch.qos.logback.classic.helpers.MDCInsertingServletFilter.doFilter(MDCInsertingServletFilter.java:49)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1618)
+        at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+        at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1618)
+        at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+        at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1618)
+        at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:109)
+        at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1618)
+        at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+        at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1618)
+        at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:549)
+        at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:143)
+        at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:602)
+        at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127)
+        at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:235)
+        at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:1610)
+        at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:233)
+        at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1369)
+        at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:188)
+        at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:489)
+        at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1580)
+        at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:186)
+        at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1284)
+        at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
+        at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127)
+        at org.eclipse.jetty.server.Server.handle(Server.java:501)
+        at org.eclipse.jetty.server.HttpChannel.lambda$handle$1(HttpChannel.java:383)
+        at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:556)
+        at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:375)
+        at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:272)
+        at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:311)
+        at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103)
+        at org.eclipse.jetty.io.ChannelEndPoint$1.run(ChannelEndPoint.java:104)
+        at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.runTask(EatWhatYouKill.java:336)
+        at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:313)
+        at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.tryProduce(EatWhatYouKill.java:171)
+        at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.run(EatWhatYouKill.java:129)
+        at org.eclipse.jetty.util.thread.ReservedThreadExecutor$ReservedThread.run(ReservedThreadExecutor.java:375)
+        at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:806)
+        at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:938)
+        at java.base/java.lang.Thread.run(Thread.java:834)
