@@ -2,8 +2,9 @@ package main
 
 import (
 	"bufio"
+	"flag"
 	"fmt"
-	"io"
+	"log"
 	"math"
 	"os"
 	"strings"
@@ -11,141 +12,96 @@ import (
 	"time"
 )
 
+var tags = []string{"TRACE", "INFO", "DEBUG", "ERROR", "WARN"}
+
+// BufferSize size
+const (
+	BufferSize = 16
+	rFC3339    = "2006-01-02T15:04:05"
+)
+
+type chunk struct {
+	bufsize int
+	offset  int64
+}
+
+func getTimeInput(startTime string, stopTime string) (time.Time, time.Time) {
+	start, errStart := time.Parse(rFC3339, startTime)
+	stop, errStop := time.Parse(rFC3339, stopTime)
+
+	if errStart != nil || errStop != nil {
+		log.Fatal("Could not parse the time provided as input")
+	}
+	return start, stop
+
+}
+
+func shouldReturn(startTime time.Time, stopTime time.Time, logLine string) bool {
+	logParts := strings.SplitN(logLine, ",", 2)
+	logTimeString := strings.Replace(logParts[0], " ", "T", 1)
+	creationTime, err := time.Parse(rFC3339, logTimeString)
+	if err != nil {
+		fmt.Println("Error while parsing date in the log file", err)
+	}
+	if creationTime.After(startTime) && creationTime.Before(stopTime) {
+		return true
+	}
+	return false
+}
+
 func main() {
-	s := time.Now()
-	args := os.Args[1:]
-	if len(args) != 6 { // for format  LogExtractor.exe -f "From Time" -t "To Time" -i "Log file directory location"
-		fmt.Println("Please give proper command line arguments")
-		return
-	}
-	startTimeArg := args[1]
-	finishTimeArg := args[3]
-	fileName := args[5]
 
-	file, err := os.Open(fileName)
+	//f, err := os.Open("info.log")
+	path := flag.String("path", "info.log", "The path of the log to be analyzed")
+	level := flag.String("level", "ERROR", "Log level to look for. Default options are: TRACE, INFO, DEBUG, and ERROR")
+	startTime := flag.String("startTime", "2020-01-01T18:00:58", "Start time for the log file if format YYYY-MM-DD'T'HH:MM:SS")
+	stopTime := flag.String("stopTime", "2025-08-19T18:00:58", "Stop time for the log file if format YYYY-MM-DD'T'HH:MM:SS")
 
-	if err != nil {
-		fmt.Println("cannot able to read the file", err)
-		return
-	}
+	flag.Parse()
 
-	defer file.Close() //close after checking err
-
-	queryStartTime, err := time.Parse("2006-01-02T15:04:05.0000Z", startTimeArg)
-	if err != nil {
-		fmt.Println("Could not able to parse the start time", startTimeArg)
-		return
-	}
-	fmt.Println(queryStartTime)
-	queryFinishTime, err := time.Parse("2006-01-02T15:04:05.0000Z", finishTimeArg)
-	if err != nil {
-		fmt.Println("Could not able to parse the finish time", finishTimeArg)
-		return
-	}
-	fmt.Println(queryFinishTime)
-
-	filestat, err := file.Stat()
-	if err != nil {
-		fmt.Println("Could not able to get the file stat")
-		return
-	}
-
-	fileSize := filestat.Size()
-	offset := fileSize - 1
-	lastLineSize := 0
-
-	for {
-		b := make([]byte, 1)
-		n, err := file.ReadAt(b, offset)
-		if err != nil {
-			fmt.Println("Error reading file ", err)
-			break
-		}
-		char := string(b[0])
-		if char == "\n" {
-			break
-		}
-		offset--
-		lastLineSize += n
-	}
-
-	lastLine := make([]byte, lastLineSize)
-	_, err = file.ReadAt(lastLine, offset+1)
+	start, stop := getTimeInput(*startTime, *stopTime)
+	fmt.Println(start.String())
+	f, err := os.Open(*path)
 
 	if err != nil {
-		fmt.Println("Could not able to read last line with offset", offset, "and lastline size", lastLineSize)
-		return
+		log.Fatal("File does not exist")
+		//panic("File does not exist")
 	}
-
-	logSlice := strings.SplitN(string(lastLine), ",", 2)
-	logCreationTimeString := logSlice[0]
-
-	fmt.Println(logCreationTimeString)
-	lastLogCreationTime, err := time.Parse("2006-01-02T15:04:05.0000Z", logCreationTimeString)
-	if err != nil {
-		fmt.Println("can not able to parse time : ", err)
-	}
-
-	if lastLogCreationTime.After(queryStartTime) && lastLogCreationTime.Before(queryFinishTime) {
-		Process(file, queryStartTime, queryFinishTime)
-	}
-
-	fmt.Println("\nTime taken - ", time.Since(s))
-}
-
-// Process bla bla
-func Process(f *os.File, start time.Time, end time.Time) error {
-
-	linesPool := sync.Pool{New: func() interface{} {
-		lines := make([]byte, 250*1024)
-		return lines
-	}}
-
-	stringPool := sync.Pool{New: func() interface{} {
-		lines := ""
-		return lines
-	}}
-
+	defer f.Close()
 	r := bufio.NewReader(f)
-
-	var wg sync.WaitGroup
-
+	var cont bool = false
 	for {
-		buf := linesPool.Get().([]byte)
-
-		n, err := r.Read(buf)
-		buf = buf[:n]
-
-		if n == 0 {
-			if err != nil {
-				fmt.Println(err)
-				break
-			}
-			if err == io.EOF {
-				break
-			}
-			return err
+		s, err := r.ReadString('\n')
+		if err != nil {
+			break
 		}
 
-		nextUntillNewline, err := r.ReadBytes('\n')
+		//time.Parse
 
-		if err != io.EOF {
-			buf = append(buf, nextUntillNewline...)
+		if strings.Contains(s, *level) {
+			if shouldReturn(start, stop, s) {
+				fmt.Println(s)
+				cont = true
+			} else {
+				cont = false
+			}
+		} else {
+			for _, value := range tags {
+				if strings.Contains(s, value) {
+					cont = false
+					break
+				}
+			}
+			if cont {
+				fmt.Println(s)
+			}
 		}
-
-		wg.Add(1)
-		go func() {
-			ProcessChunk(buf, &linesPool, &stringPool, start, end)
-			wg.Done()
-		}()
 
 	}
 
-	wg.Wait()
-	return nil
 }
 
-// ProcessChunk bla bla
+// ProcessChunk is chunk
 func ProcessChunk(chunk []byte, linesPool *sync.Pool, stringPool *sync.Pool, start time.Time, end time.Time) {
 
 	var wg2 sync.WaitGroup
