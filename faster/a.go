@@ -5,10 +5,8 @@ import (
 	"flag"
 	"fmt"
 	"log"
-	"math"
 	"os"
 	"strings"
-	"sync"
 	"time"
 )
 
@@ -19,11 +17,6 @@ const (
 	BufferSize = 16
 	rFC3339    = "2006-01-02T15:04:05"
 )
-
-type chunk struct {
-	bufsize int
-	offset  int64
-}
 
 func getTimeInput(startTime string, stopTime string) (time.Time, time.Time) {
 	start, errStart := time.Parse(rFC3339, startTime)
@@ -41,7 +34,7 @@ func shouldReturn(startTime time.Time, stopTime time.Time, logLine string) bool 
 	logTimeString := strings.Replace(logParts[0], " ", "T", 1)
 	creationTime, err := time.Parse(rFC3339, logTimeString)
 	if err != nil {
-		fmt.Println("Error while parsing date in the log file", err)
+		log.Fatal("Error while parsing date in the log file", err)
 	}
 	if creationTime.After(startTime) && creationTime.Before(stopTime) {
 		return true
@@ -60,7 +53,7 @@ func main() {
 	flag.Parse()
 
 	start, stop := getTimeInput(*startTime, *stopTime)
-	fmt.Println(start.String())
+	//fmt.Println(start.String())
 	f, err := os.Open(*path)
 
 	if err != nil {
@@ -77,7 +70,6 @@ func main() {
 		}
 
 		//time.Parse
-
 		if strings.Contains(s, *level) {
 			if shouldReturn(start, stop, s) {
 				fmt.Println(s)
@@ -99,57 +91,4 @@ func main() {
 
 	}
 
-}
-
-// ProcessChunk is chunk
-func ProcessChunk(chunk []byte, linesPool *sync.Pool, stringPool *sync.Pool, start time.Time, end time.Time) {
-
-	var wg2 sync.WaitGroup
-
-	logs := stringPool.Get().(string)
-	logs = string(chunk)
-
-	linesPool.Put(chunk)
-
-	logsSlice := strings.Split(logs, "\n")
-
-	stringPool.Put(logs)
-
-	chunkSize := 300
-	n := len(logsSlice)
-	noOfThread := n / chunkSize
-
-	if n%chunkSize != 0 {
-		noOfThread++
-	}
-
-	for i := 0; i < (noOfThread); i++ {
-
-		wg2.Add(1)
-		go func(s int, e int) {
-			defer wg2.Done() //to avaoid deadlocks
-			for i := s; i < e; i++ {
-				text := logsSlice[i]
-				if len(text) == 0 {
-					continue
-				}
-				logSlice := strings.SplitN(text, ",", 2)
-				logCreationTimeString := logSlice[0]
-
-				logCreationTime, err := time.Parse("2006-01-02T15:04:05.0000Z", logCreationTimeString)
-				if err != nil {
-					fmt.Printf("\n Could not able to parse the time :%s for log : %v", logCreationTimeString, text)
-					return
-				}
-
-				if logCreationTime.After(start) && logCreationTime.Before(end) {
-					//fmt.Println(text)
-				}
-			}
-
-		}(i*chunkSize, int(math.Min(float64((i+1)*chunkSize), float64(len(logsSlice)))))
-	}
-
-	wg2.Wait()
-	logsSlice = nil
 }
