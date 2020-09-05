@@ -1,100 +1,98 @@
 package main
 
 import (
+	"archive/tar"
 	"bytes"
 	"context"
 	"flag"
 	"fmt"
 	"io"
 	"os"
+	"path"
 	"path/filepath"
+	"strings"
+
+	_ "unsafe"
 
 	coreV1 "k8s.io/api/core/v1"
-	"k8s.io/apimachinery/pkg/api/errors"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	"k8s.io/client-go/deprecated/scheme"
 	"k8s.io/client-go/kubernetes"
-	"k8s.io/client-go/rest"
+	typev1 "k8s.io/client-go/kubernetes/typed/core/v1"
+	rest "k8s.io/client-go/rest"
 	"k8s.io/client-go/tools/clientcmd"
-	//
-	// Uncomment to load all auth plugins
-	// _ "k8s.io/client-go/plugin/pkg/client/auth"
-	//
-	// Or uncomment to load specific auth plugins
-	// _ "k8s.io/client-go/plugin/pkg/client/auth/azure"
-	// _ "k8s.io/client-go/plugin/pkg/client/auth/gcp"
-	// _ "k8s.io/client-go/plugin/pkg/client/auth/oidc"
-	// _ "k8s.io/client-go/plugin/pkg/client/auth/openstack"
+	"k8s.io/client-go/tools/remotecommand"
 )
 
+var files = [...]string{"/tmp/file.txt", "/tmp/file2.log"}
+
 func main() {
+	namespace := flag.String("namespace", "default", "Namespace to get the logs for the pods")
+	destPath := flag.String("destination", "output", "Destination to copy the log files")
+	flag.Parse()
+
+	// fmt.Printf("Password: ")
+	// password, _ := terminal.ReadPassword(0)
+
+	// fmt.Printf("Password is : %s", password)
+
+	listOptions := metav1.ListOptions{}
+	ctx := context.Background()
+
 	var kubeconfig *string
 	if home := homeDir(); home != "" {
 		kubeconfig = flag.String("kubeconfig", filepath.Join(home, ".kube", "config"), "(optional) absolute path to the kubeconfig file")
 	} else {
 		kubeconfig = flag.String("kubeconfig", "", "absolute path to the kubeconfig file")
 	}
-	//flag.Parse()
 
-	// use the current context in kubeconfig
-	config, err := clientcmd.BuildConfigFromFlags("", *kubeconfig)
-	if err != nil {
-		panic(err.Error())
+	config, k8sClient, err := getClient(*kubeconfig)
+	check(err)
+
+	pods, err := k8sClient.Pods(*namespace).List(ctx, listOptions)
+	check(err)
+
+	coreClient, _ := initRestClient(config)
+
+	for _, pod := range pods.Items {
+		nameSpace := pod.GetNamespace()
+		podName := pod.GetName()
+		fmt.Println(podName, nameSpace)
+
+		writePodLog(*destPath+"/"+podName+".log", k8sClient, nameSpace, &podName)
+
+		for _, val := range files {
+			copyFromPod(val, *destPath, config, coreClient, nameSpace, podName, pod.GetClusterName())
+		}
+
 	}
+	fmt.Println("Process finished")
+}
 
-	// create the clientset
-	clientset, err := kubernetes.NewForConfig(config)
-	if err != nil {
-		panic(err.Error())
+func check(e error) {
+	if e != nil {
+		panic(e)
 	}
-	//for {
+}
 
-	pods, err := clientset.CoreV1().Pods("").List(context.TODO(), metav1.ListOptions{})
-	if err != nil {
-		panic(err.Error())
-	}
-	fmt.Printf("There are %d pods in the cluster\n", len(pods.Items))
-
-	//ctx := context.Background()
-	//pd, _ := clientset.CoreV1().Pods("kubernetes").Get(ctx, "my-nginx", metav1.GetOptions{})
-	//log := getPodLogs(*pd)
-
+func writePodLog(destPath string, k8sClient typev1.CoreV1Interface, namespace string, pod *string) {
 	podLogOpts := coreV1.PodLogOptions{}
-	req := clientset.CoreV1().Pods("default").GetLogs("my-nginx", &podLogOpts)
-
+	req := k8sClient.Pods(namespace).GetLogs(*pod, &podLogOpts)
 	podLogs, err := req.Stream(context.Background())
-	if err != nil {
-		panic(err.Error())
-	}
+	check(err)
+
 	defer podLogs.Close()
 
 	buf := new(bytes.Buffer)
 	_, err = io.Copy(buf, podLogs)
-	if err != nil {
-		panic("error in copy information from podLogs to buf")
-	}
-	str := buf.String()
-	fmt.Println(str)
+	check(err)
 
-	// Examples for error handling:
-	// - Use helper functions like e.g. errors.IsNotFound()
-	// - And/or cast to StatusError and use its properties like e.g. ErrStatus.Message
-	namespace := "default"
-	pod := "my-nginx"
-	_, err = clientset.CoreV1().Pods(namespace).Get(context.TODO(), pod, metav1.GetOptions{})
+	f, err := os.Create(destPath)
+	check(err)
 
-	if errors.IsNotFound(err) {
-		fmt.Printf("Pod %s in namespace %s not found\n", pod, namespace)
-	} else if statusError, isStatus := err.(*errors.StatusError); isStatus {
-		fmt.Printf("Error getting pod %s in namespace %s: %v\n",
-			pod, namespace, statusError.ErrStatus.Message)
-	} else if err != nil {
-		panic(err.Error())
-	} else {
-		fmt.Printf("Found pod %s in namespace %s\n", pod, namespace)
-	}
+	defer f.Close()
 
-	//time.Sleep(10 * time.Second)
-	//}
+	f.WriteString(buf.String())
 }
 
 func homeDir() string {
@@ -104,31 +102,120 @@ func homeDir() string {
 	return os.Getenv("USERPROFILE") // windows
 }
 
-func getPodLogs(pod coreV1.Pod) string {
-	podLogOpts := coreV1.PodLogOptions{}
-	config, err := rest.InClusterConfig()
-	if err != nil {
-		return "error in getting config"
+func initRestClient(config *rest.Config) (*typev1.CoreV1Client, error) {
+	coreClient, err := typev1.NewForConfig(config)
+	check(err)
+	return coreClient, err
+}
+
+func copyFromPod(srcPath string, srcDest string, config *rest.Config, coreClient *typev1.CoreV1Client,
+	nameSpace string, pod string, container string) error {
+	reader, outStream := io.Pipe()
+	cmdArr := []string{"tar", "cf", "-", srcPath}
+	req := coreClient.RESTClient().
+		Get().
+		Namespace(nameSpace).
+		Resource("pods").
+		Name(pod).
+		SubResource("exec").
+		VersionedParams(&coreV1.PodExecOptions{
+			Container: container,
+			Command:   cmdArr,
+			Stdin:     true,
+			Stdout:    true,
+			Stderr:    true,
+			TTY:       false,
+		}, scheme.ParameterCodec)
+
+	exec, err := remotecommand.NewSPDYExecutor(config, "POST", req.URL())
+	check(err)
+	go func() {
+		defer outStream.Close()
+		err = exec.Stream(remotecommand.StreamOptions{
+			Stdin:  os.Stdin,
+			Stdout: outStream,
+			Stderr: os.Stderr,
+			Tty:    false,
+		})
+	}()
+	prefix := getPrefix(srcPath)
+	prefix = path.Clean(prefix)
+	//prefix = cpStripPathShortcuts(prefix)
+	srcDest = path.Join(srcDest, path.Base(prefix))
+	err = untarAll(reader, srcDest, prefix)
+	return err
+}
+
+func untarAll(reader io.Reader, destDir, prefix string) error {
+	tarReader := tar.NewReader(reader)
+	for {
+		header, err := tarReader.Next()
+		if err != nil {
+			if err != io.EOF {
+				return err
+			}
+			break
+		}
+
+		if !strings.HasPrefix(header.Name, prefix) {
+			return fmt.Errorf("tar contents corrupted")
+		}
+
+		mode := header.FileInfo().Mode()
+		destFileName := filepath.Join(destDir, header.Name[len(prefix):])
+
+		baseName := filepath.Dir(destFileName)
+		if err := os.MkdirAll(baseName, 0755); err != nil {
+			return err
+		}
+		if header.FileInfo().IsDir() {
+			if err := os.MkdirAll(destFileName, 0755); err != nil {
+				return err
+			}
+			continue
+		}
+
+		evaledPath, err := filepath.EvalSymlinks(baseName)
+		check(err)
+
+		if mode&os.ModeSymlink != 0 {
+			linkname := header.Linkname
+
+			if !filepath.IsAbs(linkname) {
+				_ = filepath.Join(evaledPath, linkname)
+			}
+
+			if err := os.Symlink(linkname, destFileName); err != nil {
+				return err
+			}
+		} else {
+			outFile, err := os.Create(destFileName)
+			check(err)
+			defer outFile.Close()
+			if _, err := io.Copy(outFile, tarReader); err != nil {
+				return err
+			}
+			if err := outFile.Close(); err != nil {
+				return err
+			}
+		}
 	}
-	// creates the clientset
+
+	return nil
+}
+
+func getPrefix(file string) string {
+	return strings.TrimLeft(file, "/")
+}
+
+func getClient(kubeconfig string) (*rest.Config, typev1.CoreV1Interface, error) {
+	// use the current context in kubeconfig
+	config, err := clientcmd.BuildConfigFromFlags("", kubeconfig)
+	check(err)
+
+	// create the clientset
 	clientset, err := kubernetes.NewForConfig(config)
-	if err != nil {
-		return "error in getting access to K8S"
-	}
-	req := clientset.CoreV1().Pods(pod.Namespace).GetLogs(pod.Name, &podLogOpts)
-	ctx := context.Background()
-	podLogs, err := req.Stream(ctx)
-	if err != nil {
-		return "error in opening stream"
-	}
-	defer podLogs.Close()
+	check(err)
 
-	buf := new(bytes.Buffer)
-	_, err = io.Copy(buf, podLogs)
-	if err != nil {
-		return "error in copy information from podLogs to buf"
-	}
-	str := buf.String()
-
-	return str
+	return config, clientset.CoreV1(), nil
 }
