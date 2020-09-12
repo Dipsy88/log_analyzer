@@ -5,6 +5,8 @@ go 1.14
 require (
 	github.com/Azure/go-autorest/autorest v0.11.4 // indirect
 	github.com/Azure/go-autorest/autorest/adal v0.9.2 // indirect
+	github.com/go-git/go-git v4.7.0+incompatible
+	github.com/go-git/go-git/v5 v5.1.0
 	github.com/googleapis/gnostic v0.5.1 // indirect
 	github.com/gophercloud/gophercloud v0.12.0 // indirect
 	github.com/howeyc/gopass v0.0.0-20190910152052-7cb4b85ec19c
@@ -13,6 +15,7 @@ require (
 	golang.org/x/net v0.0.0-20200822124328-c89045814202 // indirect
 	golang.org/x/oauth2 v0.0.0-20200107190931-bf48bf16ab8d // indirect
 	golang.org/x/time v0.0.0-20200630173020-3af7569d3a1e // indirect
+	gopkg.in/src-d/go-git.v4 v4.13.1 // indirect
 	k8s.io/api v0.19.0
 	k8s.io/apimachinery v0.19.0
 	k8s.io/client-go v0.19.0

@@ -1,23 +1,41 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"syscall"
 	"time"
 
 	"github.com/go-git/go-git/v5"
 	"github.com/go-git/go-git/v5/plumbing/object"
 	"github.com/go-git/go-git/v5/plumbing/transport/http"
+	"golang.org/x/crypto/ssh/terminal"
 )
 
 func main() {
-	path := filepath.FromSlash("/Users/Dipesh/OneDrive/Useful/Studying/GO/cli/git/tmp")
-	repo, err := git.PlainClone(path, false, &git.CloneOptions{
+	path := flag.String("path", "/Users/tmp/git", "Path to clone github repo")
+	userName := flag.String("userName", "", "User name for the git repo")
+	email := flag.String("email", "", "Email address associated with the user name for the git repo")
+	flag.Parse()
+
+	if *userName == "" {
+		flag.Usage()
+		os.Exit(1)
+	}
+	fmt.Print("Enter password: ")
+	password, _ := terminal.ReadPassword(int(syscall.Stdin))
+
+	makeDirIfRequired(*path)
+
+	//path := filepath.FromSlash("/Users/Dipesh/OneDrive/Useful/Studying/GO/cli/git/tmp")
+	repo, err := git.PlainClone(*path, false, &git.CloneOptions{
 		Auth: &http.BasicAuth{
-			Username: "dipsy88",
-			Password: "Dipesh77",
+			//Username: "dipsy88",
+			Username: *userName,
+			Password: string(password[:]),
 		},
 		URL:      "https://github.com/Dipsy88/web_scrapper.git",
 		Progress: os.Stdout,
@@ -27,7 +45,7 @@ func main() {
 	w, err := repo.Worktree()
 	checkIfError(err)
 
-	filename := filepath.Join(path, "ExampleFile")
+	filename := filepath.Join(*path, "ExampleFile")
 	err = ioutil.WriteFile(filename, []byte("hello world {}"), 0644)
 	checkIfError(err)
 
@@ -44,8 +62,9 @@ func main() {
 	// Check commit
 	commit, err := w.Commit("ExampleFile", &git.CommitOptions{
 		Author: &object.Signature{
-			Name:  "Dipesh Pradhan",
-			Email: "dipesh@gmail.com",
+			Name: *userName,
+			//Email: "dipsy.urfriend@gmail.com",
+			Email: *email,
 			When:  time.Now(),
 		},
 	})
@@ -53,17 +72,25 @@ func main() {
 
 	obj, err := repo.CommitObject(commit)
 	checkIfError(err)
-
 	fmt.Println(obj)
 
 	err = repo.Push(&git.PushOptions{
 		Auth: &http.BasicAuth{
-			Username: "dipsy88",
-			Password: "Dipesh77",
+			Username: *userName,
+			Password: string(password[:]),
 		},
 	})
 	checkIfError(err)
+}
 
+func makeDirIfRequired(path string) {
+	_, err := os.Stat(path)
+
+	if os.IsNotExist(err) {
+		fmt.Println("Creating directory", path)
+		err := os.MkdirAll(path, 0755)
+		checkIfError(err)
+	}
 }
 
 func checkIfError(e error) {
