@@ -30,11 +30,10 @@ func main() {
 	password, _ := terminal.ReadPassword(int(syscall.Stdin))
 
 	path := filepath.FromSlash(*pathInput)
-	makeDirIfRequired(*pathInput)
+	makeDirIfRequired(path)
 
 	repo, err := git.PlainClone(path, false, &git.CloneOptions{
 		Auth: &http.BasicAuth{
-			//Username: "dipsy88",
 			Username: *userName,
 			Password: string(password[:]),
 		},
@@ -63,8 +62,7 @@ func main() {
 	// Check commit
 	commit, err := w.Commit("ExampleFile", &git.CommitOptions{
 		Author: &object.Signature{
-			Name: *userName,
-			//Email: "dipsy.urfriend@gmail.com",
+			Name:  *userName,
 			Email: *email,
 			When:  time.Now(),
 		},
