@@ -16,28 +16,29 @@ import (
 )
 
 func main() {
-	path := flag.String("path", "/Users/tmp/git", "Path to clone github repo")
+	pathInput := flag.String("path", "/Users/tmp/git", "Path to clone github repo")
 	userName := flag.String("userName", "", "User name for the git repo")
 	email := flag.String("email", "", "Email address associated with the user name for the git repo")
+	repoURL := flag.String("repo", "", "Git repo to clone")
 	flag.Parse()
 
-	if *userName == "" {
+	if *userName == "" || *repoURL == "" {
 		flag.Usage()
 		os.Exit(1)
 	}
 	fmt.Print("Enter password: ")
 	password, _ := terminal.ReadPassword(int(syscall.Stdin))
 
-	makeDirIfRequired(*path)
+	path := filepath.FromSlash(*pathInput)
+	makeDirIfRequired(*pathInput)
 
-	//path := filepath.FromSlash("/Users/Dipesh/OneDrive/Useful/Studying/GO/cli/git/tmp")
-	repo, err := git.PlainClone(*path, false, &git.CloneOptions{
+	repo, err := git.PlainClone(path, false, &git.CloneOptions{
 		Auth: &http.BasicAuth{
 			//Username: "dipsy88",
 			Username: *userName,
 			Password: string(password[:]),
 		},
-		URL:      "https://github.com/Dipsy88/web_scrapper.git",
+		URL:      *repoURL,
 		Progress: os.Stdout,
 	})
 	checkIfError(err)
@@ -45,7 +46,7 @@ func main() {
 	w, err := repo.Worktree()
 	checkIfError(err)
 
-	filename := filepath.Join(*path, "ExampleFile")
+	filename := filepath.Join(path, "ExampleFile")
 	err = ioutil.WriteFile(filename, []byte("hello world {}"), 0644)
 	checkIfError(err)
 
